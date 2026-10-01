@@ -1,0 +1,20 @@
+SOURCE: https://www.csusb.edu/cse/resources/excels-grant-program
+COLLECTED: 2026-09-30
+NOTE: Summary of page text captured via fetch; replace with the page's verbatim text when collecting by hand.
+
+Experiential Computing and Engaged Learning Scholarships (ExCELS)
+
+The NSF awarded a $2.5M grant providing scholarships to undergraduate students at CSUSB's School of Computer Science and Engineering. The program targets academically talented students who demonstrate financial need pursuing computing-related majors.
+
+Eligibility Requirements:
+- Full-time enrollment (minimum 12 units per semester)
+- Declared major in Computer Science, Computer Engineering, Computer Systems, Bioinformatics, or Data Science
+- Cumulative GPA of 2.7 or higher
+- Evidence of financial need (e.g., Pell Grant recipients)
+- U.S. citizen, national, refugee, or permanent resident
+
+Award Amount: Up to $10,000 per year per student for up to 4 years, with 30 awards available annually.
+
+Application Deadline: Reviews begin November 1, 2025.
+
+How to Apply: Stage 1 requires submitting the ExCELS Application Form (including ~500-word personal statement and unofficial transcript) and completing a FAFSA. Stage 2 shortlisted applicants must submit two faculty recommendation letters and an educational plan.
