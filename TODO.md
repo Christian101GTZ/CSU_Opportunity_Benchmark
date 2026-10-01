@@ -26,7 +26,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 - [ ] `docs/schema.md`: the fields from PROPOSAL.md section 7, with the scoring metric declared per field
 - [ ] `docs/labeling-guide.md`: the rules, one decision per rule, plus one fully worked example
 - [ ] `docs/hard-cases.md`: empty file with a header, to be filled while labeling
-- [ ] Test the guide on a non-STEM listing (the worked example so far, CSUSB ExCELS, is STEM)
+- [x] Test the guide on a non-STEM listing (the worked example so far, CSUSB ExCELS, is STEM) (09/30/2026: CSUSB Music and World Languages, 13 awards)
 
 **Done when:** a classmate could label a listing using only the guide.
 

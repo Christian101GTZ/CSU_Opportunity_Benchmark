@@ -1,6 +1,6 @@
 # Labeling guide
 
-Version 0.4.1 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
+Version 0.4.2 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
 
 ## General rules
 
@@ -24,7 +24,7 @@ Version 0.4.1 (09/30/2026). Read `docs/schema.md` first. Each rule decides exact
 9. Only a number counts. "Good academic standing" is `"not stated"`. If two GPAs appear (cumulative and major), take the cumulative and put the other in `other_requirements`.
 
 ### `class_year`
-10. Map wording to the five values: "upper division" = `["junior", "senior"]`; "lower division" = `["freshman", "sophomore"]`; "undergraduate" with no further restriction = `["any"]`; "rising junior" = `["sophomore"]` (the student's year when applying). "Graduating senior" = `["senior"]` with a note in `other_requirements`.
+10. Map wording to the schema values (`freshman`, `sophomore`, `junior`, `senior`, `graduate`, or `["any"]`): "upper division" = `["junior", "senior"]`; "lower division" = `["freshman", "sophomore"]`; "undergraduate" with no further restriction = `["any"]`; "rising junior" = `["sophomore"]` (the student's year when applying). "Graduating senior" = `["senior"]` with a note in `other_requirements`.
 11. Unit-count thresholds (for example "60+ units") are not converted to a class year. Put them in `other_requirements` and label `class_year` as `"not stated"`.
 
 ### `residency`
@@ -75,3 +75,4 @@ The full record is in `docs/schema.md`.
 - 0.3 (09/30/2026): Rule 3 (exact quoting) now applies to `award_amount` only; Rule 19 sets short phrases in the page's key words for `other_requirements`, with numbers, dates, names, and qualifiers copied exactly.
 - 0.4 (09/30/2026): Rule 12 splits `DACA eligible` (DACA only) from `undocumented eligible` (undocumented students, or AB 540 named).
 - 0.4.1 (09/30/2026): Rule 1 clarified: never infer eligibility from an award's name. No change to labels.
+- 0.4.2 (09/30/2026): Rule 10 lists the schema's six class-year values (it said "five" and left out `graduate`). No change to labels.
