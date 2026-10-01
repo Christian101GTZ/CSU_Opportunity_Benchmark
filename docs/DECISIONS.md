@@ -3,6 +3,11 @@
 One entry per decision that shapes the project. Newest first. Each entry: date, decision, reason, what it affects.
 A dropped step or a changed quota goes here, not only in TODO.md.
 
+## 09/30/2026 — Shared page text applies to every award (Rule 2b)
+**Decision:** Text on a listing page that applies to all its awards (shared requirements, deadlines, default GPA) goes into every record from that page; an award's own text overrides it. Menus, sidebars, linked pages, and general office text do not count.
+**Reason:** A student reads shared requirements as applying to each award, and the model sees the same page, so gold records that drop shared text would mark correct model answers wrong. Two pages already need this (CSUSB Music, CSUSB World Languages), and vendor portals use the same pattern. The same-page limit keeps labelers from pulling in text from other pages.
+**Affects:** docs/labeling-guide.md (Rule 2b, version 0.2), data/labeled/listings.jsonl (csusb-music records), Step 6 input design (rule holds whether the model gets the whole page or one award at a time).
+
 ## 09/30/2026 — All majors, not STEM only
 **Decision:** Listings span all colleges; aim for no more than 40 percent STEM-specific majors, and include business, education, arts and humanities, social sciences, health, and any-major awards.
 **Reason:** The research question is about listing formats, and a STEM-only set would limit what the results say. Any-major and humanities listings also tend to be the sparse, prose-style hard cases.

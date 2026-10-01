@@ -1,11 +1,12 @@
 # Labeling guide
 
-Version 0.1 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
+Version 0.2 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
 
 ## General rules
 
 1. **Label only what the text states.** If you have to infer it, it is `"not stated"`. "Open to all students" is stated; "the department probably means CS majors" is inference.
 2. **One record per award.** A page that lists several awards becomes several records, each with its own `id` and the same `source_url`. A page describing one program with several tiers is one record; put the tiers in `award_amount` as written.
+   2b. **Shared page text applies to every award.** Text on the listing page that applies to all its awards (shared requirements, deadlines, default GPA) goes into every record from that page. Text for a single award overrides the shared text. Menus, sidebars, linked pages, and general office text are not shared text.
 3. **Quote, do not paraphrase, in `award_amount` and `other_requirements`.** Shorten only by trimming, never by rewording a figure.
 4. **Dates use US format** (`MM/DD/YYYY`). A date with no year takes the year that makes it next in the future from `collected_on`, and the case is logged in `hard-cases.md`.
 5. **Case and punctuation do not matter for list fields** (`majors`, `class_year`); the scorer normalizes them. Spell them as the page does.
@@ -70,3 +71,4 @@ The full record is in `docs/schema.md`.
 ## Changes
 
 - 0.1 (09/30/2026): first version with 19 rules and one worked example.
+- 0.2 (09/30/2026): added Rule 2b (shared page text applies to every award) after the CSUSB Music and World Languages pages both had page-wide requirements.

@@ -1,2 +1,5 @@
 id,source_url,campus,format,collected_on,raw_file
 csusb-cse-001,https://www.csusb.edu/cse/resources/excels-grant-program,CSUSB,prose,09/30/2026,data/raw/csusb-cse-001.txt
+csusb-music-001,https://www.csusb.edu/music/applications-auditions/scholarships,CSUSB,prose,09/30/2026,data/raw/csusb-music-001.txt
+csusb-wll-001,https://www.csusb.edu/world-languages-and-literatures/resources/scholarships-and-other-opportunities,CSUSB,prose,09/30/2026,data/raw/csusb-wll-001.txt
+
