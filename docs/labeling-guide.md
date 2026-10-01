@@ -1,10 +1,10 @@
 # Labeling guide
 
-Version 0.4 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
+Version 0.4.1 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
 
 ## General rules
 
-1. **Label only what the text states.** If you have to infer it, it is `"not stated"`. "Open to all students" is stated; "the department probably means CS majors" is inference.
+1. **Label only what the text states.** If you have to infer it, it is `"not stated"`. "Open to all students" is stated; "the department probably means CS majors" is inference. Never infer eligibility from an award's name (a heritage, a language, or a person's name): "Acto Latino" does not mean Latino-only.
 2. **One record per award.** A page that lists several awards becomes several records, each with its own `id` and the same `source_url`. A page describing one program with several tiers is one record; put the tiers in `award_amount` as written.
    2b. **Shared page text applies to every award.** Text on the listing page that applies to all its awards (shared requirements, deadlines, default GPA) goes into every record from that page. Text for a single award overrides the shared text. Menus, sidebars, linked pages, and general office text are not shared text.
 3. **Quote, do not paraphrase, in `award_amount`.** Shorten only by trimming, never by rewording a figure. (`other_requirements` follows Rule 19.)
@@ -74,3 +74,4 @@ The full record is in `docs/schema.md`.
 - 0.2 (09/30/2026): added Rule 2b (shared page text applies to every award) after the CSUSB Music and World Languages pages both had page-wide requirements.
 - 0.3 (09/30/2026): Rule 3 (exact quoting) now applies to `award_amount` only; Rule 19 sets short phrases in the page's key words for `other_requirements`, with numbers, dates, names, and qualifiers copied exactly.
 - 0.4 (09/30/2026): Rule 12 splits `DACA eligible` (DACA only) from `undocumented eligible` (undocumented students, or AB 540 named).
+- 0.4.1 (09/30/2026): Rule 1 clarified: never infer eligibility from an award's name. No change to labels.
