@@ -1,13 +1,13 @@
 # Labeling guide
 
-Version 0.2 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
+Version 0.4 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
 
 ## General rules
 
 1. **Label only what the text states.** If you have to infer it, it is `"not stated"`. "Open to all students" is stated; "the department probably means CS majors" is inference.
 2. **One record per award.** A page that lists several awards becomes several records, each with its own `id` and the same `source_url`. A page describing one program with several tiers is one record; put the tiers in `award_amount` as written.
    2b. **Shared page text applies to every award.** Text on the listing page that applies to all its awards (shared requirements, deadlines, default GPA) goes into every record from that page. Text for a single award overrides the shared text. Menus, sidebars, linked pages, and general office text are not shared text.
-3. **Quote, do not paraphrase, in `award_amount` and `other_requirements`.** Shorten only by trimming, never by rewording a figure.
+3. **Quote, do not paraphrase, in `award_amount`.** Shorten only by trimming, never by rewording a figure. (`other_requirements` follows Rule 19.)
 4. **Dates use US format** (`MM/DD/YYYY`). A date with no year takes the year that makes it next in the future from `collected_on`, and the case is logged in `hard-cases.md`.
 5. **Case and punctuation do not matter for list fields** (`majors`, `class_year`); the scorer normalizes them. Spell them as the page does.
 
@@ -28,7 +28,7 @@ Version 0.2 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly
 11. Unit-count thresholds (for example "60+ units") are not converted to a class year. Put them in `other_requirements` and label `class_year` as `"not stated"`.
 
 ### `residency`
-12. Any phrasing that requires US citizenship, nationality, or permanent residency = `US citizen or permanent resident`. If DACA, AB 540, or undocumented students are explicitly included = `DACA eligible`. California residency alone = `California resident`. "Open to international students" or no restriction stated = `any` only if openness is stated; otherwise `"not stated"`.
+12. Any phrasing that requires US citizenship, nationality, or permanent residency = `US citizen or permanent resident`. If DACA recipients are named as eligible but undocumented students in general are not = `DACA eligible`. If undocumented students are explicitly included (with or without DACA), or the page names AB 540 students = `undocumented eligible`. California residency alone = `California resident`. "Open to international students" or no restriction stated = `any` only if openness is stated; otherwise `"not stated"`.
 
 ### `financial_need`
 13. `required` only if the page says need is required or names a need indicator as a requirement (Pell Grant, FAFSA-demonstrated need). "Preference given to students with need" is `"not stated"` with a note in `other_requirements`.
@@ -45,7 +45,7 @@ Version 0.2 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly
 18. Decided by who may apply, never by which site hosts the listing. A listing on an SDSU page for SDSU students = `campus-only`. A CSU-wide program (Sally Casanova) on an SDSU page = `system-wide`. An NSF REU or a national scholarship = `open`.
 
 ### `other_requirements`
-19. Short phrases, one requirement each: enrollment status, unit counts, essays, letters, review dates, preferences. This field is not scored in v0.1; it is for the error analysis and for future schema changes.
+19. Short phrases, one requirement each (enrollment status, unit counts, essays, letters, review dates, preferences), using the page's own key words. Copy numbers, dates, names, and qualifiers ("may", "preferred", "at CSUSB") exactly; never add meaning the page does not state. This field is not scored in v0.1; it is for the error analysis and for future schema changes.
 
 ## Worked example
 
@@ -72,3 +72,5 @@ The full record is in `docs/schema.md`.
 
 - 0.1 (09/30/2026): first version with 19 rules and one worked example.
 - 0.2 (09/30/2026): added Rule 2b (shared page text applies to every award) after the CSUSB Music and World Languages pages both had page-wide requirements.
+- 0.3 (09/30/2026): Rule 3 (exact quoting) now applies to `award_amount` only; Rule 19 sets short phrases in the page's key words for `other_requirements`, with numbers, dates, names, and qualifiers copied exactly.
+- 0.4 (09/30/2026): Rule 12 splits `DACA eligible` (DACA only) from `undocumented eligible` (undocumented students, or AB 540 named).

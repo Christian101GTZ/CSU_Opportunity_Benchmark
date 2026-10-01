@@ -1,6 +1,6 @@
 # Schema
 
-Version 0.1 (09/30/2026). One record per award. A field the listing does not state is `"not stated"`, never guessed.
+Version 0.2 (09/30/2026). One record per award. A field the listing does not state is `"not stated"`, never guessed.
 The scoring column says how `eval/score.py` compares a model output to the gold label for that field.
 
 ## Provenance fields (filled at collection, not by the model)
@@ -22,7 +22,7 @@ The scoring column says how `eval/score.py` compares a model output to the gold 
 | `majors` | list of strings, or `["any"]`, or `"not stated"` | `["Computer Science", "Computer Engineering", "Computer Systems", "Bioinformatics", "Data Science"]` | set F1 after lowercasing and trimming |
 | `min_gpa` | number, or `"not stated"` | `2.7` | exact after rounding to 2 decimals |
 | `class_year` | list from `freshman`, `sophomore`, `junior`, `senior`, `graduate`, or `["any"]`, or `"not stated"` | `["junior", "senior"]` | set F1 |
-| `residency` | one of `US citizen or permanent resident`, `DACA eligible`, `California resident`, `any`, `not stated` | `US citizen or permanent resident` | exact |
+| `residency` | one of `US citizen or permanent resident`, `DACA eligible`, `undocumented eligible`, `California resident`, `any`, `not stated` | `US citizen or permanent resident` | exact |
 | `financial_need` | one of `required`, `not stated` | `required` | exact |
 | `deadline` | US date (MM/DD/YYYY), or `rolling`, or `conflict`, or `"not stated"` | `02/13/2026` | exact after date normalization |
 | `award_amount` | string as written, or `"not stated"` | `Up to $10,000 per year for up to 4 years` | token F1 after lowercasing; dollar figures must match exactly |
@@ -60,4 +60,5 @@ The scoring column says how `eval/score.py` compares a model output to the gold 
 
 ## Changes
 
-- 0.1 (09/30/2026): first version. Added `financial_need` and `other_requirements` after the first worked example showed both are common eligibility statements (see `docs/DECISIONS.md`).
+- 0.1 (09/30/2026): first version.
+- 0.2 (09/30/2026): `residency` split: `DACA eligible` (DACA recipients only) and `undocumented eligible` (undocumented students with or without DACA, or AB 540 students). See `docs/DECISIONS.md`. Added `financial_need` and `other_requirements` after the first worked example showed both are common eligibility statements (see `docs/DECISIONS.md`).

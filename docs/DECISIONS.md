@@ -3,6 +3,16 @@
 One entry per decision that shapes the project. Newest first. Each entry: date, decision, reason, what it affects.
 A dropped step or a changed quota goes here, not only in TODO.md.
 
+## 09/30/2026 — Residency: split DACA from undocumented
+**Decision:** `residency` gets a new value, `undocumented eligible` (undocumented students explicitly included, with or without DACA, or AB 540 students named). `DACA eligible` now means DACA recipients only.
+**Reason:** DACA is what separates some undocumented students from others: a DACA-only award excludes undocumented students without DACA, while an undocumented-eligible award includes them. One merged value would hide that eligibility flip, which the error analysis is meant to catch. Listings use "AB 540" to mean undocumented students who attended California schools, so the guide maps it to `undocumented eligible` rather than leaving it to each labeler.
+**Affects:** docs/schema.md (version 0.2), docs/labeling-guide.md (Rule 12, version 0.4), eval/score.py (allowed values). No existing record used `DACA eligible`; no relabeling.
+
+## 09/30/2026 — Exact quoting only in `award_amount`; short phrases in `other_requirements`
+**Decision:** Rule 3 (quote, do not paraphrase) applies to `award_amount` only. `other_requirements` uses short phrases in the page's key words, with numbers, dates, names, and qualifiers copied exactly (Rule 19).
+**Reason:** Rules 3 and 19 contradicted each other. `award_amount` is scored, so exact wording matters; `other_requirements` is not scored and is used to scan and group requirements, where full quotes become unwieldy. Meaning drifts mainly through numbers and qualifiers, so those must be exact.
+**Affects:** docs/labeling-guide.md (Rules 3 and 19, version 0.3). Existing records already follow it; no relabeling.
+
 ## 09/30/2026 — Shared page text applies to every award (Rule 2b)
 **Decision:** Text on a listing page that applies to all its awards (shared requirements, deadlines, default GPA) goes into every record from that page; an award's own text overrides it. Menus, sidebars, linked pages, and general office text do not count.
 **Reason:** A student reads shared requirements as applying to each award, and the model sees the same page, so gold records that drop shared text would mark correct model answers wrong. Two pages already need this (CSUSB Music, CSUSB World Languages), and vendor portals use the same pattern. The same-page limit keeps labelers from pulling in text from other pages.

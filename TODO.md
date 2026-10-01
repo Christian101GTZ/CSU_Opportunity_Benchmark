@@ -52,6 +52,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 - [ ] `eval/extract.py`: sends raw text + schema, returns JSON, saves to `eval/outputs/<model>/<id>.json`
 - [ ] `eval/score.py`: compares outputs to gold per field; writes `eval/results/<model>.csv`
 - [ ] `eval/test_score.py`: pytest for the scorer (exact, normalized, partial match)
+- [ ] Decide whether the `majors` scorer strips "Department of" / "School of" so department names written differently still match
 - [ ] Read every error; tag each with a cause
 
 **Done when:** a per-field score table for 50 items and a list of error causes.
