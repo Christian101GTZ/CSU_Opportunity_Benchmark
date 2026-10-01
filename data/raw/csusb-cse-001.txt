@@ -1,5 +1,5 @@
 SOURCE: https://www.csusb.edu/cse/resources/excels-grant-program
-COLLECTED: 2026-09-30
+COLLECTED: 09/30/2026
 NOTE: Summary of page text captured via fetch; replace with the page's verbatim text when collecting by hand.
 
 Experiential Computing and Engaged Learning Scholarships (ExCELS)

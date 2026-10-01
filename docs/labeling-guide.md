@@ -1,13 +1,13 @@
 # Labeling guide
 
-Version 0.1 (2026-09-30). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
+Version 0.1 (09/30/2026). Read `docs/schema.md` first. Each rule decides exactly one thing. When a listing is not covered by a rule, log it in `docs/hard-cases.md` and label it `"not stated"` until a rule is added.
 
 ## General rules
 
 1. **Label only what the text states.** If you have to infer it, it is `"not stated"`. "Open to all students" is stated; "the department probably means CS majors" is inference.
 2. **One record per award.** A page that lists several awards becomes several records, each with its own `id` and the same `source_url`. A page describing one program with several tiers is one record; put the tiers in `award_amount` as written.
 3. **Quote, do not paraphrase, in `award_amount` and `other_requirements`.** Shorten only by trimming, never by rewording a figure.
-4. **Dates become ISO** (`YYYY-MM-DD`). A date with no year takes the year that makes it next in the future from `collected_on`, and the case is logged in `hard-cases.md`.
+4. **Dates use US format** (`MM/DD/YYYY`). A date with no year takes the year that makes it next in the future from `collected_on`, and the case is logged in `hard-cases.md`.
 5. **Case and punctuation do not matter for list fields** (`majors`, `class_year`); the scorer normalizes them. Spell them as the page does.
 
 ## Field rules
@@ -48,7 +48,7 @@ Version 0.1 (2026-09-30). Read `docs/schema.md` first. Each rule decides exactly
 
 ## Worked example
 
-**Source:** CSUSB CSE, ExCELS Grant Program, collected 2026-09-30 (`data/raw/csusb-cse-001.txt`).
+**Source:** CSUSB CSE, ExCELS Grant Program, collected 09/30/2026 (`data/raw/csusb-cse-001.txt`).
 
 Page says, in short: NSF-funded scholarships for undergraduates in the School of Computer Science and Engineering; full-time enrollment (12+ units); declared major in Computer Science, Computer Engineering, Computer Systems, Bioinformatics, or Data Science; cumulative GPA 2.7 or higher; evidence of financial need such as Pell Grant; US citizen, national, refugee, or permanent resident; up to $10,000 per year for up to 4 years, 30 awards per year; reviews begin November 1, 2025.
 
@@ -63,10 +63,10 @@ Page says, in short: NSF-funded scholarships for undergraduates in the School of
 | `deadline` | `"not stated"` | Rule 14: "reviews begin" is not a deadline |
 | `award_amount` | `Up to $10,000 per year for up to 4 years` | Rule 17 |
 | `scope` | `campus-only` | Rule 18: CSUSB students only |
-| `other_requirements` | `["full-time enrollment (12+ units)", "review begins 2025-11-01", "30 awards per year"]` | Rule 19 |
+| `other_requirements` | `["full-time enrollment (12+ units)", "review begins 11/01/2025", "30 awards per year"]` | Rule 19 |
 
 The full record is in `docs/schema.md`.
 
 ## Changes
 
-- 0.1 (2026-09-30): first version with 19 rules and one worked example.
+- 0.1 (09/30/2026): first version with 19 rules and one worked example.
