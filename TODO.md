@@ -11,12 +11,13 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 - [ ] Ten-minute Google Scholar pass with: "scholarship eligibility extraction", "opportunity listing extraction language model"
 - [x] Three-sentence gap statement written into PROPOSAL.md section 2
 
-**Done when:** the gap statement is in the proposal and the Scholar pass found nothing new. (2026-09-29: web check done; Scholar pass pending)
+**Done when:** the gap statement is in the proposal and the Scholar pass found nothing new. (09/29/2026: web check done; Scholar pass pending)
 
 ## Step 2. Set up the repo
 - [ ] Create public GitHub repo `csu-opportunity-benchmark`
 - [ ] Add folders: `data/raw/`, `data/labeled/`, `docs/`, `eval/`
 - [ ] Add `README.md`, `PROPOSAL.md`, `TODO.md`, `docs/DECISIONS.md`, `LICENSE` (MIT), `data/LICENSE` (CC BY 4.0), `.gitignore`, `requirements.txt`
+- [ ] Add LICENSE (MIT) at root and data/LICENSE (CC BY 4.0)
 - [ ] Open in VS Code; first commit: "Initial layout and proposal"
 
 **Done when:** the README is pushed and the folders exist.
@@ -25,12 +26,14 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 - [ ] `docs/schema.md`: the fields from PROPOSAL.md section 7, with the scoring metric declared per field
 - [ ] `docs/labeling-guide.md`: the rules, one decision per rule, plus one fully worked example
 - [ ] `docs/hard-cases.md`: empty file with a header, to be filled while labeling
+- [ ] Test the guide on a non-STEM listing (the worked example so far, CSUSB ExCELS, is STEM)
 
 **Done when:** a classmate could label a listing using only the guide.
 
 ## Step 4. Collect the first 50 listings
 - [ ] 20 portal listings (SDSU AcademicWorks, CSU Fullerton NGWeb)
-- [ ] 20 department prose pages (CSUSB CNS / CSBS / CSE, Cal Poly Pomona)
+- [ ] 20 department prose pages, beyond CNS and CSE: CSUSB Arts and Letters, Business, Education, CSBS; Cal Poly Pomona non-STEM departments
+- [ ] Listings span all colleges, not only STEM: aim for no more than 40 percent STEM-specific majors, and include business, education, arts and humanities, social sciences, health, and any-major awards
 - [ ] 10 PDFs or flyers
 - [ ] For each: save raw text or PDF in `data/raw/<id>.*`; add a row to `data/sources.csv` with id, source_url, campus, format, collected_on
 - [ ] Check robots.txt for every domain used; note the result in `docs/sources.md`
@@ -55,6 +58,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 
 ## Step 7. Decide
 - [ ] Review errors and hard cases: is the schema right? are the quotas realistic?
+- [ ] Count `majors` by college across the labeled set; if STEM-specific is over 40 percent, shift the next collection toward other colleges
 - [ ] Write the decision (continue / adjust / pause) and the reason at the top of README.md and in DECISIONS.md
 - [ ] Optional: present the 50-item results to Dr. Alzahrani
 
@@ -63,6 +67,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 ## Step 8. Reach ~200
 - [ ] 70 portal · 70 prose · 40 PDF/flyer/email · 20 research/system-wide
 - [ ] At least 5 campuses; no single source over ~50
+- [ ] Listings span all colleges; no more than 40 percent STEM-specific majors (check the Step 7 count)
 
 **Done when:** about 200 labeled records meeting the quotas.
 

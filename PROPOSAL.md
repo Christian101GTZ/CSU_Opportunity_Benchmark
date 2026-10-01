@@ -1,7 +1,7 @@
 # CSU Opportunity Extraction Benchmark: Research Proposal
 
 **Author:** Christian A. Gomez Diaz (CSUSB, B.S. Computer Science, expected May 2027)
-**Date:** 2026-09-29
+**Date:** 09/29/2026
 **Status:** Stage 1, independent work
 
 Stage 1 builds a public, human-labeled dataset of about 200 CSU-system opportunity listings in mixed formats and measures how reliably open-weight language models extract their eligibility fields. Written in the structure of the CSUSB AI Research Lab proposal template; the content is new and independent.
@@ -18,7 +18,7 @@ Listings live on vendor portals, department prose pages, PDFs, flyers, and email
 
 ## 2. Background and related work
 
-A literature check on 2026-09-29 found no published benchmark for extracting eligibility fields from scholarship or research-opportunity listings. The closest work falls into four groups.
+A literature check on 09/29/2026 found no published benchmark for extracting eligibility fields from scholarship or research-opportunity listings. The closest work falls into four groups.
 
 | Area | Representative work | What it does | Gap it leaves |
 | --- | --- | --- | --- |
@@ -29,13 +29,13 @@ A literature check on 2026-09-29 found no published benchmark for extracting eli
 
 Adjacent evidence that the pattern works: clinical-trial eligibility extraction (Criteria2Query 3.0, 2024; EC-RAFT, ACL Findings 2025) is a mature research line in medicine that has not been ported to education.
 
-**Gap check (Step 1, done 2026-09-29).** What exists: classical and multi-label classifiers that recommend scholarships from synthetic or private data, one institution-side LLM classifier of 100 private funding-call PDFs, mature job-posting extractors with a skills schema, and generic per-field extraction benchmarks in finance and legal domains. What does not exist: any public, human-labeled dataset of real student-opportunity listings with per-field eligibility labels, or any per-field LLM extraction results on such text; the only student-facing agents found (a Kaggle capstone demo, OpportunityX on GitHub) publish no data or evaluation. Why it is still worth doing: every matching tool or agent for students depends on this extraction step, and today there is no way to measure it.
+**Gap check (Step 1, done 09/29/2026).** What exists: classical and multi-label classifiers that recommend scholarships from synthetic or private data, one institution-side LLM classifier of 100 private funding-call PDFs, mature job-posting extractors with a skills schema, and generic per-field extraction benchmarks in finance and legal domains. What does not exist: any public, human-labeled dataset of real student-opportunity listings with per-field eligibility labels, or any per-field LLM extraction results on such text; the only student-facing agents found (a Kaggle capstone demo, OpportunityX on GitHub) publish no data or evaluation. Why it is still worth doing: every matching tool or agent for students depends on this extraction step, and today there is no way to measure it.
 
 ## 3. Novelty and contribution
 
 The contribution is a domain-specific benchmark, not another generic JSON-extraction test.
 
-- **A public, human-labeled dataset** of about 200 real CSU-system listings, in mixed formats, with source URL and collection date on every item. None exists today.
+- **A public, human-labeled dataset** of about 200 real CSU-system listings, in mixed formats, covering all majors (not only STEM), with source URL and collection date on every item. None exists today.
 - **An eligibility schema** built for student opportunities: major, GPA, class year, residency or citizenship, deadline, award amount, campus, and scope (campus-only, system-wide, or open).
 - **Hard cases on purpose:** implicit eligibility, missing or conflicting deadlines, multi-award pages, and sparse department prose, which generic benchmarks do not cover.
 - **A downstream check:** whether each extraction error would change a student's eligibility decision, which links extraction quality to real consequences.
@@ -65,10 +65,10 @@ Each of these is a later stage (section 12) and starts only after Stage 1 is com
 
 Quotas are set by format and type, not by campus, because the research question is about formats. Campus is recorded on every item so per-campus results can still be reported.
 
-| Format / type | Target count | Candidate sources (checked 2026-09-29) | Notes |
+| Format / type | Target count | Candidate sources (checked 09/29/2026) | Notes |
 | --- | --- | --- | --- |
 | Vendor portal listings | 70 | SDSU AcademicWorks (~800 public); CSU Fullerton NGWeb (522 public); CSULB AcademicWorks (~100) | About 25 each; two different vendors give two templates |
-| Department prose pages | 70 | CSUSB CNS (~24); CSUSB CSBS (~8); CSUSB CSE ExCELS (1); Cal Poly Pomona department pages (9+ per dept); two or three more campuses | The hard cases: sparse fields, implied eligibility |
+| Department prose pages | 70 | CSUSB CNS (~24); CSUSB CSBS (~8); CSUSB CSE ExCELS (1); CSUSB education, business, and arts and letters pages; Cal Poly Pomona department pages (9+ per dept); two or three more campuses | The hard cases: sparse fields, implied eligibility |
 | PDFs, flyers, emails | 40 | Department PDFs, posted flyers, forwarded campus emails | Collected by hand; record where each came from |
 | Research and system-wide programs | 20 | CSUSB U-RISE / MARC; Sally Casanova (via a campus mirror); NSF REU site pages opened manually; HSF | Adds citizenship and class-year variety |
 
@@ -76,9 +76,10 @@ Collection rules:
 
 - Cap any single source at about 50 items so no portal dominates.
 - Include at least 5 campuses.
+- Listings span all colleges, not only STEM: aim for no more than 40 percent STEM-specific majors, and include business, education, arts and humanities, social sciences, health, and any-major awards. The portal sources (SDSU, Fullerton, CSULB) already cover every college, so this mostly means picking department pages beyond CNS and CSE: CSUSB's College of Arts and Letters, Business, and Education, and Cal Poly Pomona's non-STEM departments.
 - Collect by hand or with light tooling on public pages only; respect robots.txt (the NSF REU search page disallows crawling, so open individual REU sites instead) and vendor terms.
 - Save the raw text or PDF, the source URL, and the collection date for every item. The dataset is a frozen snapshot; it is not meant to stay current.
-- CSUSB's own scholarship portal is behind MyCoyote and is out of scope. Cal Poly Pomona's portal reopens 2026-10-01.
+- CSUSB's own scholarship portal is behind MyCoyote and is out of scope. Cal Poly Pomona's portal reopens 10/01/2026.
 
 Open question: how many PDFs and flyers are reachable without a login. If fewer than 40, lower that quota and say so in the write-up.
 
@@ -95,7 +96,7 @@ Every listing gets one record with these fields. A field the listing does not st
 | class_year | list of: freshman, sophomore, junior, senior, graduate | junior; senior | Map phrases like "upper division" to junior; senior |
 | residency | one of: US citizen or permanent resident, DACA eligible, California resident, any, not stated | US citizen or permanent resident | As written |
 | financial_need | one of: required, not stated | required | |
-| deadline | date or rolling or not stated | 2026-02-13 | Convert to ISO date; `rolling` if the page says so |
+| deadline | date or rolling or not stated | 02/13/2026 | Convert to MM/DD/YYYY; `rolling` if the page says so |
 | award_amount | text or not stated | $500 to $5,000 | Keep the range as written |
 | scope | one of: campus-only, system-wide, open | campus-only | Who can apply, not who publishes it |
 | other_requirements | list of short strings, or `[]` | `["full-time enrollment (12+ units)"]` | Not scored in v0.1; kept for error analysis |
@@ -123,7 +124,7 @@ Labeling guide rules (draft; each decides one thing):
 
 ## 8b. How benchmark papers are normally built (2023-2026)
 
-Checked 2026-09-29 against four recent extraction benchmarks and the standard checklists. This project follows the same pattern at a smaller scale.
+Checked 09/29/2026 against four recent extraction benchmarks and the standard checklists. This project follows the same pattern at a smaller scale.
 
 | Practice | What recent papers do | This project |
 | --- | --- | --- |
@@ -146,7 +147,7 @@ This runs alongside the CodePath AI 301 capstone, coursework, and work, at about
 
 | Checkpoint | Work | Decision it enables |
 | --- | --- | --- |
-| 0. Confirm the gap | Read the closest papers; search Google Scholar for 2025-2026 work | Go or adjust the framing (done 2026-09-29) |
+| 0. Confirm the gap | Read the closest papers; search Google Scholar for 2025-2026 work | Go or adjust the framing (done 09/29/2026) |
 | 1. Schema and guide | Draft the schema and one-page labeling guide | Start collecting |
 | 2. First 50 | 20 portal, 20 prose, 10 PDF or flyer, labeled; one model run; look at the errors | Is the schema right? Keep going, pause, or bring it to a mentor |
 | 3. Full set | Reach about 200 with the format quotas; agreement subset | Run all baselines |
@@ -208,8 +209,8 @@ This grew out of an idea (OpportunityScout, a recommender agent) proposed in Dr.
 Papers and datasets
 
 - ScholarSpot: Scholarship Recommendation System using Machine Learning (IEEE ICCUBEA 2024). https://ieeexplore.ieee.org/document/10775136/
-- Padiya et al., Enhancing Scholarship Opportunities: A Multi-label Classification Approach (AITA 2024, Springer 2025). https://link.springer.com/chapter/10.1007/978-981-96-1687-9_17 (read in full 2026-09-29)
-- Figueroa-Gómez and Galpin, From Text to Decision: A GenAI Framework for Strategic Evaluation of Funding Opportunities (SN Computer Science, 2025). https://link.springer.com/article/10.1007/s42979-025-04304-7 (read in full 2026-09-29)
+- Padiya et al., Enhancing Scholarship Opportunities: A Multi-label Classification Approach (AITA 2024, Springer 2025). https://link.springer.com/chapter/10.1007/978-981-96-1687-9_17 (read in full 09/29/2026)
+- Figueroa-Gómez and Galpin, From Text to Decision: A GenAI Framework for Strategic Evaluation of Funding Opportunities (SN Computer Science, 2025). https://link.springer.com/article/10.1007/s42979-025-04304-7 (read in full 09/29/2026)
 - Skill-LLM / SkillSpan (arXiv 2410.12052). https://arxiv.org/abs/2410.12052
 - SkillSpan (NAACL 2022). https://aclanthology.org/2022.naacl-main.366.pdf
 - Chinese-SkillSpan (arXiv 2604.23009). https://arxiv.org/abs/2604.23009
