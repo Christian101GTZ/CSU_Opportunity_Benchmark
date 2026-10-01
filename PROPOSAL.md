@@ -45,7 +45,7 @@ The contribution is a domain-specific benchmark, not another generic JSON-extrac
 
 1. **Dataset.** Collect and label about 200 public CSU listings meeting the format quotas in section 6, from at least 5 campuses. Measurable outcome: the dataset, with every item carrying its source URL, collection date, and all schema fields.
 2. **Labeling quality.** Write a one-page labeling guide with one decision per rule, and have a second labeler label about 100 items (fallback: re-label 20 to 30 items yourself after two weeks, stated as a limitation). Measurable outcome: a reported agreement number per field.
-3. **Baselines.** Run two or three open-weight models (for example a 7B to 8B model and a smaller one via Ollama) with the same prompt and output schema. Measurable outcome: per-field exact-match and partial-match scores, plus overall record accuracy.
+3. **Baselines.** Run three Apache-2.0 models (Qwen 2.5 7B, Mistral 7B, OLMo 2 7B) via Ollama with the same prompt and output schema. Measurable outcome: per-field exact-match and partial-match scores, plus overall record accuracy.
 4. **Error analysis.** Classify every error by field and by source format, and flag which errors would flip an eligibility decision for a sample student profile. Measurable outcome: an error taxonomy with counts and examples.
 
 ## 5. Scope boundaries
@@ -94,9 +94,11 @@ Every listing gets one record with these fields. A field the listing does not st
 | min_gpa | number or not stated | 3.0 | Only if a number is given |
 | class_year | list of: freshman, sophomore, junior, senior, graduate | junior; senior | Map phrases like "upper division" to junior; senior |
 | residency | one of: US citizen or permanent resident, DACA eligible, California resident, any, not stated | US citizen or permanent resident | As written |
+| financial_need | one of: required, not stated | required | |
 | deadline | date or rolling or not stated | 2026-02-13 | Convert to ISO date; `rolling` if the page says so |
 | award_amount | text or not stated | $500 to $5,000 | Keep the range as written |
 | scope | one of: campus-only, system-wide, open | campus-only | Who can apply, not who publishes it |
+| other_requirements | list of short strings, or `[]` | `["full-time enrollment (12+ units)"]` | Not scored in v0.1; kept for error analysis |
 | source_url, collected_on, format | text, date, one of: portal, prose, pdf, flyer, email | | Provenance |
 
 Labeling guide rules (draft; each decides one thing):
@@ -109,7 +111,7 @@ Labeling guide rules (draft; each decides one thing):
 
 ## 8. Methodology
 
-**Models.** Two or three open-weight models run locally through Ollama (for example Llama 3.1 8B, Qwen 2.5 7B, and a 3B model as a small baseline). Same prompt, same JSON output schema, temperature 0. One rule-based baseline (regex for GPA, dates, and dollar amounts) shows what the models add. One API model if budget allows.
+**Models.** Three open-source (Apache-2.0) models run locally through Ollama: Qwen 2.5 7B, Mistral 7B, and OLMo 2 7B. Same prompt, same JSON output schema, temperature 0. One rule-based baseline (regex for GPA, dates, and dollar amounts) shows what the models add.
 
 **Scoring.** Per field: exact match for closed fields (type, residency, scope, class year), normalized match for dates and GPA, and token-overlap partial credit for free-text fields (majors, amount). Also report the valid-JSON rate. Whole-record accuracy is the share of listings with every field correct. Report by field and by source format. The per-field method follows ExtractBench.
 
@@ -132,7 +134,7 @@ Checked 2026-09-29 against four recent extraction benchmarks and the standard ch
 | Agreement metric | Fleiss or Cohen kappa for categories; pairwise F1 for spans; Krippendorff's alpha when fields can be missing | Krippendorff's alpha for closed fields, pairwise F1 for free text |
 | Split | Test-only is common for LLM benchmarks | Test-only; no training |
 | Metrics | Per-field metric declared per field (exact, fuzzy, numeric tolerance); valid-JSON rate; aggregate score | Same, declared in the schema file |
-| Baselines | Several open models across sizes plus one API model; a rule-based baseline | Two or three open models via Ollama, a regex baseline, one API model if budget allows |
+| Baselines | Several open models across sizes plus one API model; a rule-based baseline | Three Apache-2.0 models via Ollama and a regex baseline |
 | Error analysis | A failure-mode taxonomy with counts | Same, plus the eligibility-flip check |
 | Release | JSONL on Hugging Face or GitHub, a dataset card, an explicit license (CC BY for data, MIT for code), a scorer script | JSONL on GitHub and Hugging Face, dataset card from the Hugging Face template, CC BY 4.0 data, MIT code |
 

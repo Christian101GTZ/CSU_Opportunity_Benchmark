@@ -3,6 +3,11 @@
 One entry per decision that shapes the project. Newest first. Each entry: date, decision, reason, what it affects.
 A dropped step or a changed quota goes here, not only in TODO.md.
 
+## 2026-09-30 — Open-source only: Apache-2.0 models, no API models
+**Decision:** Open-source only: Apache-2.0 models (Qwen 2.5, Mistral, OLMo 2); no API models; Llama excluded because of its license.
+**Reason:** Apache-2.0 models can be run locally and reproduced by anyone without usage terms or cost, and results will not change when a vendor updates a hosted model. Llama's community license adds use restrictions, so it does not count as open-source here.
+**Affects:** PROPOSAL section 8 (models evaluated), README.
+
 ## 2026-09-30 — Schema v0.1: added `financial_need` and `other_requirements`
 **Decision:** Two fields added to the labeled schema. `financial_need` (required / not stated) is scored; `other_requirements` (free list) is not scored in v0.1.
 **Reason:** The first worked example (CSUSB ExCELS) states financial need as a hard requirement and has several eligibility statements (full-time enrollment, review date) that fit no field. Need is common in scholarships and changes eligibility, so it is scored; the catch-all keeps the schema small while preserving text for error analysis.
