@@ -4,7 +4,7 @@
 **Date:** 09/29/2026
 **Status:** Stage 1, independent work
 
-Stage 1 builds a public, human-labeled dataset of about 200 CSU-system opportunity listings in mixed formats and measures how reliably open-weight language models extract their eligibility fields. Written in the structure of the CSUSB AI Research Lab proposal template; the content is new and independent.
+Stage 1 builds a public, human-labeled dataset of about 180 opportunity listings from CSU San Bernardino (CSUSB) in mixed formats and measures how reliably open-weight language models extract their eligibility fields. Written in the structure of the CSUSB AI Research Lab proposal template; the content is new and independent.
 
 ---
 
@@ -35,7 +35,7 @@ Adjacent evidence that the pattern works: clinical-trial eligibility extraction 
 
 The contribution is a domain-specific benchmark, not another generic JSON-extraction test.
 
-- **A public, human-labeled dataset** of about 200 real CSU-system listings, in mixed formats, covering all majors (not only STEM), with source URL and collection date on every item. None exists today.
+- **A public, human-labeled dataset** of about 180 real CSUSB listings, in mixed formats, covering all majors (not only STEM), with source URL and collection date on every item. None exists today.
 - **An eligibility schema** built for student opportunities: major, GPA, class year, residency or citizenship, deadline, award amount, campus, and scope (campus-only, system-wide, or open).
 - **Hard cases on purpose:** implicit eligibility, missing or conflicting deadlines, multi-award pages, and sparse department prose, which generic benchmarks do not cover.
 - **A downstream check:** whether each extraction error would change a student's eligibility decision, which links extraction quality to real consequences.
@@ -43,7 +43,7 @@ The contribution is a domain-specific benchmark, not another generic JSON-extrac
 
 ## 4. Research objectives
 
-1. **Dataset.** Collect and label about 200 public CSU listings meeting the format quotas in section 6, from at least 5 campuses. Measurable outcome: the dataset, with every item carrying its source URL, collection date, and all schema fields.
+1. **Dataset.** Collect and label about 180 public CSUSB listings meeting the format quotas in section 6, across all colleges. Measurable outcome: the dataset, with every item carrying its source URL, collection date, and all schema fields.
 2. **Labeling quality.** Write a one-page labeling guide with one decision per rule, and have a second labeler label about 100 items (fallback: re-label 20 to 30 items yourself after two weeks, stated as a limitation). Measurable outcome: a reported agreement number per field.
 3. **Baselines.** Run three Apache-2.0 models (Qwen 2.5 7B, Mistral 7B, OLMo 2 7B) via Ollama with the same prompt and output schema. Measurable outcome: per-field exact-match and partial-match scores, plus overall record accuracy.
 4. **Error analysis.** Classify every error by field and by source format, and flag which errors would flip an eligibility decision for a sample student profile. Measurable outcome: an error taxonomy with counts and examples.
@@ -63,25 +63,27 @@ Each of these is a later stage (section 12) and starts only after Stage 1 is com
 
 ## 6. Data plan
 
-Quotas are set by format and type, not by campus, because the research question is about formats. Campus is recorded on every item so per-campus results can still be reported.
+Stage 1 uses one campus, CSUSB, in depth. Quotas are set by format and type because the research question is about formats; campus is still recorded on every item. A count on 09/30/2026 found about 600 public CSUSB listings, including a public scholarship catalog, so one campus covers every format except PDFs.
 
-| Format / type | Target count | Candidate sources (checked 09/29/2026) | Notes |
+| Format / type | Target count | Candidate sources (checked 09/30/2026) | Notes |
 | --- | --- | --- | --- |
-| Vendor portal listings | 70 | SDSU AcademicWorks (~800 public); CSU Fullerton NGWeb (522 public); CSULB AcademicWorks (~100) | About 25 each; two different vendors give two templates |
-| Department prose pages | 70 | CSUSB CNS (~24); CSUSB CSBS (~8); CSUSB CSE ExCELS (1); CSUSB education, business, and arts and letters pages; Cal Poly Pomona department pages (9+ per dept); two or three more campuses | The hard cases: sparse fields, implied eligibility |
-| PDFs, flyers, emails | 40 | Department PDFs, posted flyers, forwarded campus emails | Collected by hand; record where each came from |
-| Research and system-wide programs | 20 | CSUSB U-RISE / MARC; Sally Casanova (via a campus mirror); NSF REU site pages opened manually; HSF | Adds citizenship and class-year variety |
+| Vendor portal listings | 70 | CSUSB public scholarship catalog, NGWeb (324 public) | Shows eligibility but no amounts or deadlines; apply step is behind MyCoyote |
+| Department and college prose pages | 70 | CSUSB college pages (Arts and Letters ~22, Business ~34, Education ~18, Natural Sciences ~25, Social and Behavioral Sciences ~8), department pages, Palm Desert Campus (~16) | The hard cases: sparse fields, implied eligibility, shared page text |
+| Research and university-wide programs | 20 | Office of Student Research (research and travel award), U-RISE / MARC, LSAMP, Honors College, study abroad scholarships | Adds citizenship and class-year variety |
+| PDFs, flyers, emails | up to 20 | Posted flyers and campus emails collected by hand | csusb.edu has no scholarship-list PDFs; report the real count |
 
 Collection rules:
 
-- Cap any single source at about 50 items so no portal dominates.
-- Include at least 5 campuses.
-- Listings span all colleges, not only STEM: aim for no more than 40 percent STEM-specific majors, and include business, education, arts and humanities, social sciences, health, and any-major awards. The portal sources (SDSU, Fullerton, CSULB) already cover every college, so this mostly means picking department pages beyond CNS and CSE: CSUSB's College of Arts and Letters, Business, and Education, and Cal Poly Pomona's non-STEM departments.
+- The catalog supplies the portal quota; no other single page over about 25 items.
+- Many awards appear both in the catalog and on a department page with different wording. Both may be collected; each is labeled from its own text.
+- Pages that only point to outside programs (external fellowship lists, link lists) are not records.
+- Listings span all colleges, not only STEM: no more than 40 percent STEM-specific majors; include business, education, arts and humanities, social sciences, health, and any-major awards.
 - Collect by hand or with light tooling on public pages only; respect robots.txt (the NSF REU search page disallows crawling, so open individual REU sites instead) and vendor terms.
 - Save the raw text or PDF, the source URL, and the collection date for every item. The dataset is a frozen snapshot; it is not meant to stay current.
-- CSUSB's own scholarship portal is behind MyCoyote and is out of scope. Cal Poly Pomona's portal reopens 10/01/2026.
+- CSUSB's scholarship catalog is public; only the application step is behind MyCoyote, and nothing behind the login is collected.
+- Optional, after Step 10: a held-out set of 20 to 30 listings from another campus's public portal (Cal Poly Pomona or CSU Fullerton) to check whether results transfer off-campus.
 
-Open question: how many PDFs and flyers are reachable without a login. If fewer than 40, lower that quota and say so in the write-up.
+Open question: how many flyers and emails can be gathered. Report the real count in the write-up.
 
 ## 7. Schema and labeling
 
@@ -128,7 +130,7 @@ Checked 09/29/2026 against four recent extraction benchmarks and the standard ch
 
 | Practice | What recent papers do | This project |
 | --- | --- | --- |
-| Size | 35 PDFs / 12,867 fields (ExtractBench 2026); 995 synthetic emails (LLMStructBench 2026); 14,538 sentences (SkillSpan) | About 200 real listings, roughly 1,800 labeled fields |
+| Size | 35 PDFs / 12,867 fields (ExtractBench 2026); 995 synthetic emails (LLMStructBench 2026); 14,538 sentences (SkillSpan) | About 180 real listings, roughly 1,600 labeled fields |
 | Sourcing | Public-domain or open documents; PII avoided | Public CSU pages and PDFs; no student data |
 | Labeling guide | Written for ambiguous cases; released by only about a third of NLP papers | Written before labeling and released in the repo |
 | Agreement | Often skipped even by industry teams (ExtractBench says so outright); when done, measured on a subset of about 100 items | A second labeler on about 100 items if possible; self re-labeling is the fallback and is stated as a limitation |
@@ -149,8 +151,8 @@ This runs alongside the CodePath AI 301 capstone, coursework, and work, at about
 | --- | --- | --- |
 | 0. Confirm the gap | Read the closest papers; search Google Scholar for 2025-2026 work | Go or adjust the framing (done 09/29/2026) |
 | 1. Schema and guide | Draft the schema and one-page labeling guide | Start collecting |
-| 2. First 50 | 20 portal, 20 prose, 10 PDF or flyer, labeled; one model run; look at the errors | Is the schema right? Keep going, pause, or bring it to a mentor |
-| 3. Full set | Reach about 200 with the format quotas; agreement subset | Run all baselines |
+| 2. First 50 | 20 catalog, 20 prose, 5 research or university-wide, 5 flyer or email, labeled; one model run; look at the errors | Is the schema right? Keep going, pause, or bring it to a mentor |
+| 3. Full set | Reach about 180 with the format quotas; agreement subset | Run all baselines |
 | 4. Results | All models scored, error taxonomy, eligibility-flip check | Write up |
 | 5. Write-up | Short paper or report in this structure; public repo | Share with Dr. Alzahrani, decide on Stage 2 |
 
@@ -158,7 +160,7 @@ Preparedness: prior experience with RAG and evaluation sets (PS5 Game Discovery 
 
 ## 10. Expected outcomes and deliverables
 
-1. A public dataset of about 200 labeled CSU opportunity listings with provenance.
+1. A public dataset of about 180 labeled CSUSB opportunity listings with provenance.
 2. A labeling guide and schema others can reuse or extend to other university systems.
 3. Baseline per-field scores for open-weight models, by format, with an error taxonomy.
 4. A count of how often extraction errors would change a student's eligibility decision.
@@ -170,7 +172,7 @@ What this makes possible: a measured basis for the OpportunityScout idea, since 
 
 - **Compute:** a personal laptop with 16 GB RAM runs 3B to 8B models through Ollama. No GPU cluster or paid API is required. Google Colab is a fallback for larger models.
 - **Software:** Python, pandas, pytest, Ollama, Docker, Git and GitHub, VS Code. All free.
-- **Data:** public CSU pages and PDFs listed in section 6. No student data of any kind.
+- **Data:** public CSUSB pages and the public scholarship catalog listed in section 6. No student data of any kind.
 - **People:** one labeler (the author); a second labeler for the agreement subset is preferred. A faculty mentor is not required for Stage 1 but is the natural reviewer at checkpoint 5.
 - **Cost:** none beyond time.
 
@@ -232,6 +234,8 @@ Standards and checklists
 
 Data sources checked
 
+- CSUSB public scholarship catalog (NGWeb). https://csusb.scholarships.ngwebsolutions.com/Scholarships/Search (checked 09/30/2026; main portal source)
+- Checked 09/29/2026, not used after the CSUSB-only decision (09/30/2026); Pomona or Fullerton may supply the optional held-out set:
 - SDSU scholarship portal. https://sdsu.academicworks.com/opportunities
 - CSU Fullerton scholarship search. https://fullerton.scholarships.ngwebsolutions.com/Scholarships/Search
 - CSULB BeachScholarships. https://csulb.academicworks.com/opportunities

@@ -3,6 +3,16 @@
 One entry per decision that shapes the project. Newest first. Each entry: date, decision, reason, what it affects.
 A dropped step or a changed quota goes here, not only in TODO.md.
 
+## 09/30/2026 — Scope: CSUSB only
+**Decision:** Stage 1 collects from CSUSB only, about 180 listings: 70 from the public scholarship catalog (portal), 70 department and college prose pages, 20 research and university-wide programs, and up to 20 flyers or emails. The "at least 5 campuses" rule is dropped; the catalog supplies the portal quota and no other single page goes over about 25 items. Pages that only point to outside programs are not records. An off-campus held-out set (Cal Poly Pomona or Fullerton, 20 to 30 listings) is optional after Step 10.
+**Reason:** Collecting across the whole CSU system was slow, and the author wants the project tied to CSUSB. A count on 09/30/2026 found about 600 public CSUSB listings (catalog 324, department and college pages about 185, university-wide about 90), so one campus reaches the target and still covers the portal and prose formats the research question compares. csusb.edu has no scholarship-list PDFs, so that quota drops from 40 to whatever can be gathered by hand. Limitation to state: prose results reflect one campus's writing style.
+**Affects:** PROPOSAL sections 0 (summary), 3, 4 (objective 1), 6, 9, 10, 11, Sources; TODO Steps 4 and 8; README; docs/sources.md.
+
+## 09/30/2026 — Correction: CSUSB's scholarship catalog is public
+**Decision:** CSUSB's NGWeb scholarship catalog (csusb.scholarships.ngwebsolutions.com/Scholarships/Search) is in scope. The 09/29 survey said CSUSB's portal was behind MyCoyote; only the "Apply" step is.
+**Reason:** Checked 09/30/2026: the catalog loads without a login, lists 324 scholarships with eligibility (no amounts or deadlines), and robots.txt blocks only two ASP.NET resource files. Because the catalog never shows amounts or deadlines, those fields will be `not stated` for catalog records; the write-up must say so, or portal scores on those fields look easy.
+**Affects:** PROPOSAL section 6, docs/sources.md.
+
 ## 09/30/2026 — Residency: split DACA from undocumented
 **Decision:** `residency` gets a new value, `undocumented eligible` (undocumented students explicitly included, with or without DACA, or AB 540 students named). `DACA eligible` now means DACA recipients only.
 **Reason:** DACA is what separates some undocumented students from others: a DACA-only award excludes undocumented students without DACA, while an undocumented-eligible award includes them. One merged value would hide that eligibility flip, which the error analysis is meant to catch. Listings use "AB 540" to mean undocumented students who attended California schools, so the guide maps it to `undocumented eligible` rather than leaving it to each labeler.

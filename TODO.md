@@ -31,10 +31,11 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 **Done when:** a classmate could label a listing using only the guide.
 
 ## Step 4. Collect the first 50 listings
-- [ ] 20 portal listings (SDSU AcademicWorks, CSU Fullerton NGWeb)
-- [ ] 20 department prose pages, beyond CNS and CSE: CSUSB Arts and Letters, Business, Education, CSBS; Cal Poly Pomona non-STEM departments
+- [ ] 20 portal listings from the CSUSB public scholarship catalog (NGWeb)
+- [ ] 20 department and college prose pages, beyond CNS and CSE: Arts and Letters, Business, Education, CSBS, Palm Desert Campus
+- [ ] 5 research or university-wide programs (e.g. U-RISE, OSR research and travel award, Honors College); include at least one for the Step 3 classmate check
 - [ ] Listings span all colleges, not only STEM: aim for no more than 40 percent STEM-specific majors, and include business, education, arts and humanities, social sciences, health, and any-major awards
-- [ ] 10 PDFs or flyers
+- [ ] 5 flyers or emails (csusb.edu has no scholarship-list PDFs)
 - [ ] For each: save raw text or PDF in `data/raw/<id>.*`; add a row to `data/sources.csv` with id, source_url, campus, format, collected_on
 - [ ] Check robots.txt for every domain used; note the result in `docs/sources.md`
 
@@ -65,12 +66,12 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done · `[-]` dropped (s
 
 **Done when:** the decision is written down.
 
-## Step 8. Reach ~200
-- [ ] 70 portal · 70 prose · 40 PDF/flyer/email · 20 research/system-wide
-- [ ] At least 5 campuses; no single source over ~50
+## Step 8. Reach ~180
+- [ ] 70 catalog · 70 prose · 20 research/university-wide · up to 20 flyer/email
+- [ ] All CSUSB; the catalog supplies the portal quota; no other single page over ~25
 - [ ] Listings span all colleges; no more than 40 percent STEM-specific majors (check the Step 7 count)
 
-**Done when:** about 200 labeled records meeting the quotas.
+**Done when:** about 180 labeled records meeting the quotas.
 
 ## Step 9. Agreement check
 - [ ] Preferred: one other person labels ~100 items using only the guide

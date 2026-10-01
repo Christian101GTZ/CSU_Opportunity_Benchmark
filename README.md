@@ -1,10 +1,10 @@
 # CSU Opportunity Extraction Benchmark
 
-A public, human-labeled dataset of undergraduate opportunity listings (scholarships, fellowships, research programs) from the California State University system, and baseline results for how well open-weight language models extract their eligibility fields.
+A public, human-labeled dataset of undergraduate opportunity listings (scholarships, fellowships, research programs) from California State University, San Bernardino (CSUSB), and baseline results for how well open-weight language models extract their eligibility fields.
 
-**Status:** Stage 1, Step 3: labeling guide review. Guide v0.4.2 tested on 13 non-STEM awards (CSUSB Music, World Languages); next: a second person labels one listing using only the guide.
+**Status:** Stage 1, Step 3: labeling guide review. Guide v0.4.2 tested on 13 non-STEM awards (CSUSB Music, World Languages); scope set to CSUSB only (about 180 listings); next: a second person labels one listing using only the guide.
 
-**Research question:** How reliably can open-weight LLMs extract eligibility fields (major, GPA, class year, residency, deadline, award amount, scope) from real CSU opportunity listings, and which fields and formats fail?
+**Research question:** How reliably can open-weight LLMs extract eligibility fields (major, GPA, class year, residency, deadline, award amount, scope) from real CSUSB opportunity listings, and which fields and formats fail?
 
 ## Why
 
